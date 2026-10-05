@@ -57,7 +57,7 @@ endif
 IMG ?= quay.io/openshift/origin-ingress-node-firewall:latest
 DAEMON_IMG ?= quay.io/openshift/origin-ingress-node-firewall-daemon:latest
 # ENVTEST_K8S_VERSION refers to the version of kubebuilder assets to be downloaded by envtest binary.
-ENVTEST_K8S_VERSION = 1.36.0
+ENVTEST_K8S_VERSION = 1.37.0
 
 # Default namespace
 NAMESPACE ?= ingress-node-firewall-system
@@ -268,7 +268,7 @@ ENVTEST ?= $(LOCALBIN)/setup-envtest
 
 ## Tool Versions
 KUSTOMIZE_VERSION ?= v3.8.7
-CONTROLLER_TOOLS_VERSION ?= v0.21.0
+CONTROLLER_TOOLS_VERSION ?= v0.22.0
 OPERATOR_SDK_VERSION=v1.42.2
 
 KUSTOMIZE_INSTALL_SCRIPT ?= "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"
@@ -285,7 +285,7 @@ $(CONTROLLER_GEN): $(LOCALBIN)
 .PHONY: envtest
 envtest: $(ENVTEST) ## Download envtest-setup locally if necessary.
 $(ENVTEST): $(LOCALBIN)
-	test -s $(LOCALBIN)/setup-envtest || GOBIN=$(LOCALBIN) GOFLAGS="" go install sigs.k8s.io/controller-runtime/tools/setup-envtest@release-0.24
+	test -s $(LOCALBIN)/setup-envtest || GOBIN=$(LOCALBIN) GOFLAGS="" go install sigs.k8s.io/controller-runtime/tools/setup-envtest@release-0.25
 
 .PHONY: bundle
 bundle: operator-sdk manifests kustomize ## Generate bundle manifests and metadata, then validate generated files.
